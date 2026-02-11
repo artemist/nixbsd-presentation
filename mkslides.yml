@@ -1,0 +1,5 @@
+slides:
+  theme: night
+  separator_vertical: ^\s*-v-\s*$
+revealjs:
+  slideNumber: false
