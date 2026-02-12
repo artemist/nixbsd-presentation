@@ -77,6 +77,35 @@ title: "NixBSD: A New Frontier for NixOS"
 -v-
 
 ## FreeBSD Packaging
+* Some already done
+* Subsets source code
+* Patching required
+
+```nix
+{ mkDerivation, libgeom }:
+mkDerivation {
+  path = "sbin/bsdlabel";
+  extraPaths = [ "sys/geom" ];
+  buildInputs = [ libgeom ];
+}
+```
+
+-v-
+
+## Porting
+* Changing paths
+* Build tools
+* FreeBSD: `BOOTSTRAPPING`
+* OpenBSD: patches
+
+-v-
+
+## Minor Differences
+* `environ` in dynamic linker
+* clang redefinitions
+
+Notes:
+* clang redefinitions example of cutting corners to get it done
 
 -v-
 
@@ -85,12 +114,15 @@ title: "NixBSD: A New Frontier for NixOS"
 -v-
 
 ## Bootstrapping
+* Built cross from linux in CI
 
 -v-
 
-## Autotools, my behated
+## Other packages
+* Autotools, my behated
 * Wants to know FreeBSD version
 * May try to guess from builder system
+* Patches from ports
 
 -v-
 
@@ -115,6 +147,7 @@ title: "NixBSD: A New Frontier for NixOS"
 * `activate` on boot and switch
 * `switch-to-configuration` for setup
 * `boot.json` describes how to boot
+
 -v-
 
 ## Init Systems
@@ -138,6 +171,8 @@ title: "NixBSD: A New Frontier for NixOS"
 * Nix: Needs work
 * Nixpkgs: Core parts done
 * NixOS: Needs work and agreement
+
+-v-
 
 ## Status Quo
 * NixBSD maintenance challenging
